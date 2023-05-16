@@ -1,0 +1,26 @@
+
+header{
+    background-image: url("../imag/preparacion.jpg");
+}
+.navbar-toggler{
+    background-color:white;
+}
+.barraNav {
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+}
+
+.navLinks{
+    font-size: 25px;
+}
+
+.navbar-nav .nav-link.active{
+    color: white;
+}
+
+.navLinksDropdown {
+    font-size: 18px;
+}
+

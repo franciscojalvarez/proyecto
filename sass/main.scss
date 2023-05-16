@@ -1,0 +1,225 @@
+@import "_reset.scss";
+@import "_header.scss";
+@import "_footer.scss";
+
+/* Pages */
+
+//Index
+
+.presentacion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    background-image: url("../imag/background\ italiano.jpg");
+    background-size: cover;
+
+        .item1 {
+        height: 600px;
+        width: auto;
+        border-radius: 20px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        }
+
+        .item2{
+            display: flexs;
+            height: 600px ;
+            width: 400px;
+            background-image: url("../imag/1_PERFIL.png");
+            background-size: 30%;
+            margin-bottom: auto;
+            font-size: large;
+            border-radius: 20px;
+            margin-left: 15px;
+            text-align: center;
+            font-family: 'IM Fell English SC', serif;
+            font-weight: bold;
+            font-size: 1.6rem;
+            color: black;
+            margin-top: 15px;
+            margin-bottom: 15px;
+                &:hover {
+                    background: rgb(21, 150, 62);
+                    color: white;
+                    }
+                }
+        }
+
+.info{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../imag/background.jpg");
+    background-size: cover;
+    .texto{
+        background-image: url("../imag/1_PERFIL.png");
+        background-size: 30%;
+        height: 150px;
+        width: 600px;
+        border-radius: 20px;
+        text-align: center;
+        margin-top: 15px;
+        font-family: 'IM Fell English SC', serif;
+        color: black;
+        font-weight: bold;
+        font-size: 1em;
+        &:hover{
+            background:rgb(21, 150, 62);
+            color: white;
+        }
+    }
+            .imagen {
+                height: 60%;
+                width: 40%;
+                border-radius: 20px;
+                margin-top: 20px;
+            }
+}
+
+.nosotrosInfo {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 30px;
+   
+}
+
+// Carta 
+
+
+main .divH2Carta {
+    text-align: center;
+    background-color: #368327;
+    padding: 30px 0;
+    font-family: 'Roboto Serif', serif;
+    color: white;
+    font-size: 40px;
+    .h2Carta {
+    color: white;
+    font-size: 65px; 
+    }
+}
+main {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        justify-items: center;
+        align-items: center;
+        row-gap: 25px;
+        padding: 40px 0;
+        background-color: #9de094;
+    }
+    .grid-item {
+        text-align: center;
+        img {
+            border: 3px solid white;
+            border-radius: 20px;
+            }
+
+         h3 {
+            font-size: 22px;
+            margin-top: 5px;
+            font-family: 'Roboto Serif', serif;
+        }
+
+        p {
+            text-align: center;
+            font-weight: bold;
+            font-family: 'IM Fell English SC', serif;
+        }
+    }
+}
+// Trabaja con nosotros 
+
+.divContacto {
+    h2 {
+        text-align: center;
+        font-family: 'IM Fell English SC', serif;
+        font-weight: bold;   
+    }
+
+    p {
+        text-align: center;
+        font-family: 'IM Fell English SC', serif;
+        font-weight: bold; 
+    }
+}
+
+// Ubicacion
+.fa-solid {
+    font-weight: 900;
+    font-size: 80px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.boton {
+    font-weight: 700;
+    color: black;
+    border: 3px solid ;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+
+
+.mapa {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Contacto */
+
+.contacto {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.fa-brands{
+    font-weight: 900;
+    font-size: 80px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Media Index */
+@media (min-width: 1440px) and (max-width: 425px) {
+}
+
+@media (max-width:800px ){
+    .barraNav{
+        height: 20vh;
+    }
+
+    .info .imagen {
+        width: 400px;
+        height: auto;
+    }
+
+    .presentacion{
+        flex-direction: column;
+      
+    }
+}
+
+@media (max-width:600px){
+    .info .texto {
+        width: 400px;
+        height: 300px;
+    }
+}
+
+/* Media carta */
+
+@media (max-width: 768px) {
+    main .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        padding: 0 20px;
+    }
+}
+
