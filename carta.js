@@ -15,84 +15,82 @@ if (pedido == 1){
     pedido = "el delivery va hacia su domicilio " + domicilio
 }
 
-// VARIABLES DE TIPOS DE PIZZA
-let pizza1 = 1200;
-let pizza2 = 1000;
-let pizza3 = 1400;
-let pizza4 =  1450;
-let pizza5  = 1650;
-let pizza6  = 1500;
-let pizza7  = 1300;
-let pizza8  = 1200;
-let pizza9  = 1800;
+const productos = [ 
+    {id:1 , nombre:"Margarita" ,precio: 1200}, 
+    {id:2 , nombre:"Marinara" ,precio: 1000},
+    {id:3 , nombre:"Quesos" ,precio: 1400}, 
+    {id:4 , nombre:"Jamon" ,precio: 1450}, 
+    {id:5 , nombre:"Sorrento" ,precio: 1650}, 
+    {id:6 , nombre:"Cantimpalo" ,precio: 1500}, 
+    {id:7 , nombre:"Cebolla" ,precio: 1300}, 
+    {id:8 , nombre:"Veggie" ,precio: 1200}, 
+    {id:9 , nombre:"Hongos" ,precio: 1800} 
+]
 
-var precio;
+let pedidox = [];
+
+//FUNCION DE ORDEN SUPERIOR PARA RECORRER EL ARRAY DE OBJETOS
+
+let todosLosProductos = productos.map(
+    (productos) => productos.id + " " + productos.nombre +" $"+productos.precio+ "\n" );
+
 
 //FUNCION QUE PERMITE SELECCIONAR LA PIZZA
 
 function seleccionarpizza(){
-    let pizza
+    let seleccion; 
+    do{
+    (seleccion = prompt(todosLosProductos.join("-")))
+    
+    
+    finalizar = prompt("¿Quiere finalizar su pedido? SI/NO")
+    finalizar = finalizar.toUpperCase();
+} while (( finalizar != "SI") );
 
-    do {
-        pizza = parseInt(prompt(`Seleccione la Pizza:
-        1 -Margarita ($ 1200) 
-        2 -Marinara ($1000)
-        3 -Quesos ($1400)
-        4 -Jamon ($1450)
-        5 -Sorrento ($ 1200)
-        6 -Cantimpalo ($1000)
-        7 -Cebolla ($1400)
-        8 -Veggie  ($1450)
-        9 -Hongos  ($1450)`))
-    } while (( pizza > 0 && pizza > 9 ) );
-    return pizza
-}
+return seleccion}
 
-eleccion = seleccionarpizza()
-
-switch (eleccion) {
-    case 1:
-        precio = pizza1
-        eleccion = "Margarita"
-     break;
-    case 2:
-        precio = pizza2
-        eleccion = "Marinara"
-    break;
-    case 3:
-        precio = pizza3
-        eleccion = "Quesos"
-    break;
-     case 4:
-        precio =  pizza4
-        eleccion = "Jamon"
-    break;
-    case 5:
-        precio = pizza5
-        eleccion = "Sorrento"
-     break;
-    case 6:
-        precio =  pizza6
-        eleccion = "Cantimpalo"
-    break;
-    case 7:
-        precio =  pizza7
-        eleccion = "Cebolla"
-    break;
-     case 8:
-       precio =  pizza8
-       eleccion = "Veggie"
-    break;
-    case 9:
-        precio =  pizza9
-        eleccion = "Hongos"
-    break;
-}
-
-alert("Su pedido es una pizza de " + eleccion + " y el precio es $" + precio+ " " + pedido)
+seleccion = seleccionarpizza()
 
 
 
+
+switch(seleccion){  //Tomamos el valor seleccionado por el usuario
+    
+    case '1':
+        pedidox += 'Margarita: 1200' + '\n';
+        break; 
+    case '2':
+        pedidox += 'Marinara: 1000' + '\n';
+        break;
+    case '3':
+        pedidox += 'Quesos: 1400' + '\n';
+         break;
+    case '4':
+        pedidox += 'Jamón: 1450' + '\n';
+        break;
+    case '5':
+        pedidox += 'Sorrento: 1650' + '\n';
+        break;
+    case '6':
+        pedidox += 'Cantimpalo: 1500' + '\n';
+        break;
+    case '7':
+        pedidox += 'Cebolla: 1300' + '\n';
+        break;
+    case '8':
+        pedidox += 'Veggie: 1200' + '\n';
+        break;}
+
+/* alert("Su pedido es una pizza de " + pedidox /* + pizza + " y el precio es $" + total+ " " + pedido */ 
+
+
+let resultado = productos
+        .filter(productos => pedidox.includes(productos.nombre))
+        .reduce((acum,productos) => acum + productos.precio,0);
+
+alert(`Cantidad de productos pedidos: ${pedidox.length}
+Productos: ${pedidox}
+Total: ${resultado}`);
 
 
 
