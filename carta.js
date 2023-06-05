@@ -43,39 +43,41 @@ function inicial(){
 }
 
 let inicialProd = inicial();
-
 seleccionarpizza();
 
 //FUNCION QUE PERMITE SELECCIONAR LA PIZZA
 
 function seleccionarpizza(){
     let seleccion; 
+    let finalizar = "";
     do{
-        (seleccion = prompt(parseInt(inicialProd.join("-"))));
+        (seleccion = prompt(inicialProd.join("-")))
     
     
         finalizar = prompt("¿Quiere finalizar su pedido? SI/NO")
         
 
-        if (finalizar === 'NO'){
+        if (finalizar === "NO"){
             calcularTotal()
         }
 
-        finalizar.toUpperCase();
-} while (( finalizar != "SI") );
-    agregarAlCarrito(seleccion);
-
+        finalizar = finalizar.toUpperCase();
+} while (( finalizar === "SI") );
+    
+    return (seleccion)
 }
 
-seleccion = seleccionarpizza()
+seleccion = seleccionarpizza(); 
 
 agregarAlCarrito(seleccion);
+
+
 
 function agregarAlCarrito(seleccion){
 
 const productoElegido = productos.find (p => p.id === seleccion);
 
-if (productoElegido ===undefined){
+if (productoElegido === undefined){
     seleccionarpizza()
 }
 
