@@ -6,6 +6,7 @@ alert("Haga su pedido")
 /* Tipo de entrega */
 var pedido;
 
+function tipoDePedido (){
 pedido = prompt("Elija la opcion: 1-Para retirar por el local, 2-Delivery")
 
 if (pedido == 1){
@@ -14,6 +15,9 @@ if (pedido == 1){
     domicilio = prompt("Ingrese su domicilio")
     pedido = "el delivery va hacia su domicilio " + domicilio
 }
+}
+
+tipoDePedido();
 
 const productos = [ 
     {id:1 , nombre:"Margarita" ,precio: 1200}, 
@@ -31,66 +35,75 @@ let pedidox = [];
 
 //FUNCION DE ORDEN SUPERIOR PARA RECORRER EL ARRAY DE OBJETOS
 
+function inicial (){
 let todosLosProductos = productos.map(
     (productos) => productos.id + " " + productos.nombre +" $"+productos.precio+ "\n" );
+    
+    
+}
 
-
+inicial();
+seleccionarpizza();
 //FUNCION QUE PERMITE SELECCIONAR LA PIZZA
 
 function seleccionarpizza(){
     let seleccion; 
     do{
-    (seleccion = prompt(todosLosProductos.join("-")))
+    
+        (seleccion = prompt(parseInt(todosLosProductos.join("-"))));
     
     
     finalizar = prompt("¿Quiere finalizar su pedido? SI/NO")
+    
+    if (finalizar === 'NO'){
+        calcularTotal()
+    }
+
     finalizar = finalizar.toUpperCase();
 } while (( finalizar != "SI") );
 
-return seleccion}
+agregarAlCarrito(seleccion);
+}
 
 seleccion = seleccionarpizza()
 
+agregarAlCarrito(seleccion);
 
+function agregarAlCarrito(seleccion){
+const productoElegido = productos.find (p => p.id === seleccion);
 
+if (productoElegido ===undefined){
+    seleccionarpizza()
+}
 
-switch(seleccion){  //Tomamos el valor seleccionado por el usuario
+const productoAlCarrito = {
+    id : productoElegido.id,
+    nombre : productoElegido.nombre,
+    precio : productoElegido.precio,
+}
+
+pedidox.push(productoAlCarrito);
+
+const existe = productos.some (p => onabort.id === productoAlCarrito.id);
+
+if (existe) {
+    const indice = pedidox.findIndex(p => p.id ===productoAlCarrito.id);
+    pedidox[indice].cantidad++;
+    pedidox[indice].precio = productoAlCarrito.precio * pedidox[indice].cantidad;
+}else{
+    pedidox.push(productoAlCarrito);
+}
+}
+
+function calcularTotal(){
+    let resultado = productos
     
-    case '1':
-        pedidox += 'Margarita: 1200' + '\n';
-        break; 
-    case '2':
-        pedidox += 'Marinara: 1000' + '\n';
-        break;
-    case '3':
-        pedidox += 'Quesos: 1400' + '\n';
-         break;
-    case '4':
-        pedidox += 'Jamón: 1450' + '\n';
-        break;
-    case '5':
-        pedidox += 'Sorrento: 1650' + '\n';
-        break;
-    case '6':
-        pedidox += 'Cantimpalo: 1500' + '\n';
-        break;
-    case '7':
-        pedidox += 'Cebolla: 1300' + '\n';
-        break;
-    case '8':
-        pedidox += 'Veggie: 1200' + '\n';
-        break;}
+    const total = pedidox.reduce ((acc, el) => acc+=el.precio, 0)
+    
+    alert(total)
 
-/* alert("Su pedido es una pizza de " + pedidox /* + pizza + " y el precio es $" + total+ " " + pedido */ 
+}
 
-
-let resultado = productos
-        .filter(productos => pedidox.includes(productos.nombre))
-        .reduce((acum,productos) => acum + productos.precio,0);
-
-alert(`Cantidad de productos pedidos: ${pedidox.length}
-Productos: ${pedidox}
-Total: ${resultado}`);
 
 
 
