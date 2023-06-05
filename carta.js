@@ -35,34 +35,36 @@ let pedidox = [];
 
 //FUNCION DE ORDEN SUPERIOR PARA RECORRER EL ARRAY DE OBJETOS
 
-function inicial (){
-let todosLosProductos = productos.map(
+function inicial(){
+    let todosLosProductos = productos.map(
     (productos) => productos.id + " " + productos.nombre +" $"+productos.precio+ "\n" );
-    
-    
+    return todosLosProductos
+
 }
 
-inicial();
+let inicialProd = inicial();
+
 seleccionarpizza();
+
 //FUNCION QUE PERMITE SELECCIONAR LA PIZZA
 
 function seleccionarpizza(){
     let seleccion; 
     do{
+        (seleccion = prompt(parseInt(inicialProd.join("-"))));
     
-        (seleccion = prompt(parseInt(todosLosProductos.join("-"))));
     
-    
-    finalizar = prompt("¿Quiere finalizar su pedido? SI/NO")
-    
-    if (finalizar === 'NO'){
-        calcularTotal()
-    }
+        finalizar = prompt("¿Quiere finalizar su pedido? SI/NO")
+        
 
-    finalizar = finalizar.toUpperCase();
+        if (finalizar === 'NO'){
+            calcularTotal()
+        }
+
+        finalizar.toUpperCase();
 } while (( finalizar != "SI") );
+    agregarAlCarrito(seleccion);
 
-agregarAlCarrito(seleccion);
 }
 
 seleccion = seleccionarpizza()
@@ -70,6 +72,7 @@ seleccion = seleccionarpizza()
 agregarAlCarrito(seleccion);
 
 function agregarAlCarrito(seleccion){
+
 const productoElegido = productos.find (p => p.id === seleccion);
 
 if (productoElegido ===undefined){
